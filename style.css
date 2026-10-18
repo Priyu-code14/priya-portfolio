@@ -220,11 +220,17 @@ section { scroll-margin-top: var(--nav-h); }
 .stat span { font-size: 13px; color: var(--muted); }
 @media (max-width: 767px) { .stats { grid-template-columns: repeat(2, 1fr); margin-top: 50px; } }
 
+/* chips on medium screens, then small screens (keep this order) */
+@media (max-width: 991px) {
+    .hero-visual { width: min(100%, 360px); margin-top: 20px; }
+    .chip-1, .chip-2, .chip-3, .chip-4 { left: -4%; }
+    .chip-5, .chip-6, .chip-7, .chip-8 { right: -4%; }
+}
 @media (max-width: 575px) {
     .chip-2, .chip-4, .chip-6, .chip-8 { display: none; }
     .float-chip { font-size: 12px; padding: 6px 10px; }
-    .chip-1 { left: 0; } .chip-3 { left: 0; }
-    .chip-5 { right: 0; } .chip-7 { right: 0; }
+    .chip-1, .chip-3 { left: 0; }
+    .chip-5, .chip-7 { right: 0; }
 }
 
 /* =========================================================
@@ -314,11 +320,34 @@ footer .social-icons { margin-bottom: 26px; }
     .hero { text-align: center; padding-top: calc(var(--nav-h) + 20px); }
     .hero-actions, .hero .social-icons { justify-content: center; }
     .lead-text { margin-left: auto; margin-right: auto; }
-    .chip-1 { left: 2%; } .chip-2 { right: 2%; } .chip-3 { left: 4%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     *, *::before, *::after { animation: none !important; transition: none !important; }
     .reveal { opacity: 1; transform: none; }
+}
+
+/* =========================================================
+   MORE BREATHING ROOM ON LAPTOP SCREENS
+========================================================= */
+@media (min-width: 992px) {
+    /* wider gap between text and photo columns */
+    .hero .row,
+    #about .row { --bs-gutter-x: 4rem; }
+
+    .hero h1 { font-size: clamp(36px, 4.4vw, 62px); }
+    .lead-text { max-width: 500px; }
+    .section-padding { padding: 120px 0; }
+}
+
+@media (min-width: 992px) and (max-width: 1399px) {
+    .hero-visual { width: min(100%, 350px); }
+
+    /* keep chips close to the photo so they never touch the text or get clipped */
+    .chip-1, .chip-2, .chip-3, .chip-4 { left: -3%; }
+    .chip-5, .chip-6, .chip-7, .chip-8 { right: -3%; }
+    .float-chip { padding: 7px 12px; font-size: 12.5px; }
+
+    .info-grid { gap: 16px; }
 }
